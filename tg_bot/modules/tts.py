@@ -24,16 +24,16 @@ def tts(bot: Bot, update: Update, args):
     update.message.chat.send_action(ChatAction.RECORD_AUDIO)
     lang="en-US"
     tts = gTTS(reply, lang)
-    tts.save("k.mp3")
-    with open("k.mp3", "rb") as f:
+    tts.save("k.ogg")
+    with open("k.ogg", "rb") as f:
         linelist = list(f)
         linecount = len(linelist)
     if linecount == 1:
         update.message.chat.send_action(ChatAction.RECORD_AUDIO)
         lang = "en"
         tts = gTTS(reply, lang)
-        tts.save("k.mp3")
-    with open("k.mp3", "rb") as speech:
+        tts.save("k.ogg")
+    with open("k.ogg", "rb") as speech:
         update.message.reply_voice(speech, quote=False)
 
 dispatcher.add_handler(CommandHandler('tts', tts, pass_args=True))
